@@ -25,7 +25,6 @@ var concat = require('gulp-concat');
 var server = require('gulp-express');
 var jscs = require('gulp-jscs');
 var jshint = require('gulp-jshint');
-var jsonlint = require('gulp-json-lint');
 var less = require('gulp-less');
 var minifycss = require('gulp-minify-css');
 var rename = require('gulp-rename');
@@ -38,8 +37,7 @@ var pkg = require('./package.json');
 
 console.log(util.colors.yellow(
   '#----------> ' +
-  pkg.name + util.colors.green(' v' + pkg.version) + ' ' +
-  (IS_PROD? util.colors.red('production') : util.colors.blue('development')) +
+  pkg.name + util.colors.green(' v' + pkg.version) + ' ' + util.colors.blue('development') +
   ' <----------#'));
 
 // ----- task: style -----
@@ -67,7 +65,7 @@ gulp.task('script', function() {
 });
 
 // ----- task: lintjson -----
-gulp.task('lints', function() {
+gulp.task('lint', function() {
   return gulp.src(['routes/**/*.js', 'models/**/*.js', 'app.js'])
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
@@ -80,8 +78,8 @@ gulp.task('clean', function(cb) {
 });
 
 // ----- task: server -----
-gulp.task('server', ['prepare'], function() {
-  server.run(['bin/www']);
+gulp.task('server', function() {
+  server.run(['./bin/www']);
 
   // Restart the server when file changes
   gulp.watch(['views/**/*.hbs'], ['--rerun']);
@@ -92,7 +90,7 @@ gulp.task('server', ['prepare'], function() {
 // ----- task: server:kill -----
 gulp.task('server:kill', function() {
   // FIXME: does not work on Windows machines.
-  console.log('[' + util.colors.yellow('××') + '] Killing all instances of running server at port ' + util.colors.magenta('9964') + '...');
+  console.log('[' + util.colors.yellow('××') + '] Killing all instances of running server at port ' + util.colors.magenta('17766') + '...');
   console.log('     ' + util.colors.yellow('Take care!') + ' This won\'t stop gulp processes attached to server!');
   return gulp.src('')
   .pipe(shell(['lsof -i:17766 | grep \'node\' | awk \'{print $2}\' | xargs kill -9']));
