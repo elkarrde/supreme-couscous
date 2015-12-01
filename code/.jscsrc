@@ -1,0 +1,12 @@
+{
+  "preset": "node-style-guide",
+  "requireTrailingComma": null,
+  "requireCapitalizedComments": null,
+  "validateLineBreaks": null,
+  "maximumLineLength": {
+    "value": 180,
+    "allowComments": true,
+    "allowUrlComments": true,
+    "allowRegex": true
+  }
+}
