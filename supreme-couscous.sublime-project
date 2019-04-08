@@ -1,0 +1,11 @@
+{
+  "folders":
+  [
+    {
+      "path": ".",
+      "name": "Supreme Couscous",
+      "folder_exclude_patterns": [ "code/node_modules" ],
+      "file_exclude_patterns": [ "code/npm-debug.log", "*.bak" ]
+    },
+  ]
+}
